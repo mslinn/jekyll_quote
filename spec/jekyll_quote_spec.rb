@@ -39,7 +39,7 @@ end
 
 # Lets get this party started
 class MyTest
-  RSpec.describe Jekyll::Quote do
+  RSpec.describe Jekyll::Quote do # rubocop:disable Metrics/BlockLength
     let(:logger) do
       PluginMetaLogger.instance.new_logger(self, PluginMetaLogger.instance.config)
     end
@@ -49,20 +49,28 @@ class MyTest
     let(:helper) do
       JekyllTagHelper.new(
         'quote',
-        "cite='This is a citation' url='https://blah.com'",
+        "cite='This is a citation' url='https://blah.com' This is the quoted text.",
         logger
       )
     end
 
     it 'is created properly' do
+      command_line = "cite='This is a citation' url='https://blah.com' This is the quoted text.".dup
       quote = Jekyll::Quote.send(
         :new,
         'quote',
-        "cite='This is a citation' url='https://blah.com'".dup,
+        command_line,
         parse_context
       )
-      result = quote.send(:render, parse_context)
-      expect(result).to eq('')
+      result = quote.send(:render_impl, command_line)
+      expect(result).to match_ignoring_whitespace <<-END_RESULT
+        <div class='quote'>
+          This is the quoted text.
+          <br><br>
+          <span style='font-style:normal;'> &nbsp;&ndash; From <a href='https://blah.com' rel='nofollow' target='_blank'>This is a citation</a>
+          </span>
+        </div>
+      END_RESULT
     end
   end
 end

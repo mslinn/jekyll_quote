@@ -40,6 +40,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'jekyll_plugin_logger'
   spec.add_dependency 'key-value-parser'
 
+  spec.add_development_dependency 'rspec-match_ignoring_whitespace'
+  spec.add_development_dependency 'rubocop-rspec'
   # spec.add_development_dependency 'debase'
   # spec.add_development_dependency 'rubocop-jekyll'
   # spec.add_development_dependency 'rubocop-rake'

@@ -9,5 +9,5 @@ AllCops:
 Layout/LineLength:
   Max: 150
 
-# Gemspec/RequireMFA:
-#   enable: false
+Layout/MultilineMethodCallIndentation:
+  Enabled: false

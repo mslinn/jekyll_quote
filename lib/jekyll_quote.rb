@@ -4,6 +4,7 @@ require 'jekyll'
 require 'jekyll_plugin_logger'
 require 'key_value_parser'
 require 'shellwords'
+require_relative 'jekyll_tag_helper3'
 require_relative 'jekyll_quote/version'
 
 # @author Copyright 2022 Michael Slinn
@@ -20,6 +21,9 @@ module Jekyll
   #   <br><br> <span style='font-style:normal;'>&nbsp;&ndash; From Source cite.</span>
   # </div>
   class Quote < Liquid::Block
+    attr_reader :helper, :line_number, :page, :site, :text
+    attr_accessor :cite, :url
+
     # See https://github.com/Shopify/liquid/wiki/Liquid-for-Programmers#create-your-own-tags
     # @param tag_name [String] the name of the tag, which we already know.
     # @param argument_string [String] the arguments from the tag, as a single string.
@@ -32,26 +36,24 @@ module Jekyll
     def initialize(tag_name, argument_string, parse_context) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
       super
       @logger = PluginMetaLogger.instance.new_logger(self, PluginMetaLogger.instance.config)
+      @helper = JekyllTagHelper3.new(tag_name, argument_string, @logger)
       @argument_string = argument_string
 
-      argv = Shellwords.split(argument_string) # Scans name/value arguments
-      params = KeyValueParser.new.parse(argv) # Extracts key/value pairs, default value for non-existant keys is nil
-
-      @cite = params[:cite]
-      url = ''
-      argv.each do |arg|
-        if arg.start_with?('url=')
-          url = arg.delete_prefix('url=')
-          _ = params[:url]
-        end
-      end
-      @cite = "<a href='#{url}' rel='nofollow' target='_blank'>#{@cite}</a>" if @cite && url && !url.empty?
+      @cite = @helper.parameter_specified?('cite')
+      @url = @helper.parameter_specified?('url')
+      @cite = "<a href='#{@url}' rel='nofollow' target='_blank'>#{@cite}</a>" if @cite && @url && !@url.empty?
     end
 
     # Method prescribed by the Jekyll plugin lifecycle.
     # @return [String]
     def render(context)
       text = super
+      render_impl text
+    end
+
+    private
+
+    def render_impl(text)
       @cite = "#{@cite}\n<br><br>\n" unless text.end_with?('</ol>') || text.end_with?('</ul>')
       @cite = "<span style='font-style:normal;'> &nbsp;&ndash; From #{@cite}</span>\n" if @cite
       <<~END_HERE
