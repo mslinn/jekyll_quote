@@ -1,0 +1,13 @@
+AllCops:
+  Exclude:
+      - vendor/**/*
+      - Gemfile*
+      - '*.gemspec' # This does nothing. Why?
+  NewCops: enable
+  TargetRubyVersion: 2.6
+
+Layout/LineLength:
+  Max: 150
+
+# Gemspec/RequireMFA:
+#   enable: false
