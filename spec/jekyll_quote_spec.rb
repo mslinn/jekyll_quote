@@ -17,10 +17,6 @@ end
 class SiteMock
   attr_reader :config
 
-  def initialize
-    @config = YAML.safe_load(File.read('_config.yml'))
-  end
-
   def collections
     Collections.new
   end
@@ -43,7 +39,7 @@ end
 
 # Lets get this party started
 class MyTest
-  RSpec.describe Quote do
+  RSpec.describe Jekyll::Quote do
     let(:logger) do
       PluginMetaLogger.instance.new_logger(self, PluginMetaLogger.instance.config)
     end
@@ -59,7 +55,7 @@ class MyTest
     end
 
     it 'is created properly' do
-      quote = Quote.send(
+      quote = Jekyll::Quote.send(
         :new,
         'quote',
         "cite='This is a citation' url='https://blah.com'".dup,

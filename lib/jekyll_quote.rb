@@ -8,7 +8,7 @@ require_relative 'jekyll_quote/version'
 
 # @author Copyright 2022 Michael Slinn
 # @license SPDX-License-Identifier: Apache-2.0
-module JekyllPluginQuote
+module QuoteModule
   PLUGIN_NAME = 'quote'
 end
 
@@ -63,5 +63,5 @@ module Jekyll
   end
 end
 
-PluginMetaLogger.instance.info { "Loaded #{JekyllPluginQuote::PLUGIN_NAME} v0.1.0 plugin." }
-Liquid::Template.register_tag(JekyllPluginQuote::PLUGIN_NAME, QuoteModule::Quote)
+PluginMetaLogger.instance.info { "Loaded #{QuoteModule::PLUGIN_NAME} v0.1.0 plugin." }
+Liquid::Template.register_tag(QuoteModule::PLUGIN_NAME, Jekyll::Quote)
