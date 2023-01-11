@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
-require 'jekyll'
-require 'jekyll_plugin_logger'
-require 'key_value_parser'
-require 'shellwords'
-require_relative 'jekyll_tag_helper3'
+require 'jekyll_plugin_support'
+require 'jekyll_plugin_support_helper'
 require_relative 'jekyll_quote/version'
 
 # @author Copyright 2022 Michael Slinn
 # @license SPDX-License-Identifier: Apache-2.0
+
 module QuoteModule
   PLUGIN_NAME = 'quote'
 end
@@ -20,8 +18,7 @@ module Jekyll
   #   Bla bla.
   #   <br><br> <span style='font-style:normal;'>&nbsp;&ndash; From Source cite.</span>
   # </div>
-  class Quote < Liquid::Block
-    attr_reader :helper, :line_number, :page, :site, :text
+  class Quote < JekyllSupport::JekyllBlock
     attr_accessor :cite, :url
 
     # See https://github.com/Shopify/liquid/wiki/Liquid-for-Programmers#create-your-own-tags
@@ -35,23 +32,11 @@ module Jekyll
     # @return [void]
     def initialize(tag_name, argument_string, parse_context) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
       super
-      @logger = PluginMetaLogger.instance.new_logger(self, PluginMetaLogger.instance.config)
-      @helper = JekyllTagHelper3.new(tag_name, argument_string, @logger)
-      @argument_string = argument_string
 
       @cite = @helper.parameter_specified?('cite')
       @url = @helper.parameter_specified?('url')
       @cite = "<a href='#{@url}' rel='nofollow' target='_blank'>#{@cite}</a>" if @cite && @url && !@url.empty?
     end
-
-    # Method prescribed by the Jekyll plugin lifecycle.
-    # @return [String]
-    def render(context)
-      text = super
-      render_impl text
-    end
-
-    private
 
     def render_impl(text)
       @cite = "#{@cite}\n<br><br>\n" unless text.end_with?('</ol>') || text.end_with?('</ul>')
