@@ -1,0 +1,33 @@
+---
+categories: [Jekyll, Ruby]
+description: Test of quote plugin.
+date: 2023-01-12
+last_modified_at: 2023-01-12
+layout: default
+title: Quote Test
+---
+{% quote cite="Blaise Pascal, in Lettres provinciales" url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
+  I have only made this letter longer because I have not had the time to make it shorter.
+{% endquote %}
+<p>
+  Paragraph.
+</p>
+{% quote cite="Blaise Pascal, in Lettres provinciales" url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
+  I have only made this letter longer because I have not had the time to make it shorter.
+{% endquote %}
+
+
+<h2 id="id">Subheading</h2>
+{% quote cite="Blaise Pascal, in Lettres provinciales" %}
+  No <code>url</code> was provided for this quote.
+{% endquote %}
+<p>
+  Paragraph.
+</p>
+{% quote %}
+  No <code>cite</code> or <code>url</code> was provided for this quote.
+{% endquote %}
+
+{% quote url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
+No <code>cite</code> was provided for this quote.
+{% endquote %}
