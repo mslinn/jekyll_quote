@@ -38,7 +38,6 @@ More information is available on
 
 
 ## Development
-
 After checking out the repo, run `bin/setup` to install dependencies.
 
 You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -47,8 +46,8 @@ You can also run `bin/console` for an interactive prompt that will allow you to 
 To build and install this gem onto your local machine, run:
 ```shell
 $ bundle exec rake install
-jekyll_quote 1.0.0 built to pkg/jekyll_quote-0.1.0.gem.
-jekyll_quote (1.0.0) installed.
+jekyll_quote 0.1.0 built to pkg/jekyll_quote-0.1.0.gem.
+jekyll_quote (0.1.0) installed.
 ```
 
 Examine the newly built gem:
@@ -57,7 +56,7 @@ $ gem info jekyll_quote
 
 *** LOCAL GEMS ***
 
-jekyll_quote (1.0.0)
+jekyll_quote (0.1.0)
     Author: Mike Slinn
     Homepage:
     https://github.com/mslinn/jekyll_quote
