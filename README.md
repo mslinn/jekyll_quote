@@ -64,6 +64,20 @@ jekyll_quote (1.0.0)
     Generates Jekyll logger with colored output.
 ```
 
+### Testing
+Examine the output by running:
+```shell
+$ demo/_bin/debug -r
+```
+... and pointing your web browser to http://localhost:4444/
+
+### Unit Tests
+Either run `rspec` from Visual Studio Code's *Run and Debug* environment
+(<kbd>Ctrl</kbd>-<kbd>shift</kbd>-<kbd>D</kbd>) and view the *Debug Console* output,
+or run it from the command line:
+```shell
+$ rspec
+```
 
 ### Build and Push to RubyGems
 To release a new version,

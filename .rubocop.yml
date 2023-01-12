@@ -14,5 +14,8 @@ Layout/HashAlignment:
 Layout/LineLength:
   Max: 150
 
+Metrics/MethodLength:
+  Max: 30
+
 Layout/MultilineMethodCallIndentation:
   Enabled: false

@@ -55,6 +55,22 @@ class MyTest
       )
     end
 
+    it 'has no cite or url' do
+      command_line = 'This is the quoted text.'.dup
+      quote = Jekyll::Quote.send(
+        :new,
+        'quote',
+        command_line,
+        parse_context
+      )
+      result = quote.send(:render_impl, command_line)
+      expect(result).to match_ignoring_whitespace <<-END_RESULT
+        <div class='quote'>
+          This is the quoted text.
+        </div>
+      END_RESULT
+    end
+
     it 'has a cite but no url' do
       command_line = "cite='This is a citation' This is the quoted text.".dup
       quote = Jekyll::Quote.send(
@@ -75,22 +91,6 @@ class MyTest
 
     it 'has a url but no cite' do
       command_line = "url='https://blah.com' This is the quoted text.".dup
-      quote = Jekyll::Quote.send(
-        :new,
-        'quote',
-        command_line,
-        parse_context
-      )
-      result = quote.send(:render_impl, command_line)
-      expect(result).to match_ignoring_whitespace <<-END_RESULT
-        <div class='quote'>
-          This is the quoted text.
-        </div>
-      END_RESULT
-    end
-
-    it 'has no cite or url' do
-      command_line = 'This is the quoted text.'.dup
       quote = Jekyll::Quote.send(
         :new,
         'quote',

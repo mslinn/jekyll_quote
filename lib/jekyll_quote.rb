@@ -35,15 +35,22 @@ module Jekyll
 
       @cite = @helper.parameter_specified?('cite')
       @url = @helper.parameter_specified?('url')
-      @cite = "<a href='#{@url}' rel='nofollow' target='_blank'>#{@cite}</a>" if @cite && @url && !@url.empty?
     end
 
     def render_impl(text)
-      @cite = "#{@cite}\n<br><br>\n" unless text.end_with?('</ol>') || text.end_with?('</ul>')
-      @cite = "<span style='font-style:normal;'> &nbsp;&ndash; From #{@cite}</span>\n" if @cite
+      text.strip!
+      if @cite
+        attribution = if @url && !@url.empty?
+                        "<a href='#{@url}' rel='nofollow' target='_blank'>#{@cite}</a>"
+                      else
+                        "#{@cite}\n"
+                      end
+        attribution += "\n<br><br>" if text.end_with?('</ol>') || text.end_with?('</ul>')
+        attribution = "<span style='font-style:normal;'> &nbsp;&ndash; From #{@attribution}</span>\n"
+      end
       <<~END_HERE
         <div class='quote'>
-          #{text}#{@cite}
+          #{text}#{attribution}
         </div>
       END_HERE
     end
