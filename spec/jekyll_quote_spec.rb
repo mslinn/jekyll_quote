@@ -38,7 +38,7 @@ class TestParseContext < Liquid::ParseContext
   end
 end
 
-# Lets get this party started
+# These tests all fail because I have not figured out how to provide a Jekyll block body to a test
 class MyTest
   RSpec.describe Jekyll::Quote do # rubocop:disable Metrics/BlockLength
     let(:logger) do

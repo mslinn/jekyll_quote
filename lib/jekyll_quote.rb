@@ -12,7 +12,7 @@ module QuoteModule
 end
 
 module Jekyll
-  # Usage: {% quote cite='Joe Blow' url='https://blabla.com' %}Bla bla.{% endquote %}
+  # Usage: {% quote [break] [by] [cite='Joe Blow'] [noprep] [url='https://blabla.com'] %}Bla bla.{% endquote %}
   # Output looks like:
   # <div class='quote'>
   #   Bla bla.
