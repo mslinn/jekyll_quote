@@ -1,8 +1,10 @@
 AllCops:
   Exclude:
       - vendor/**/*
+      - exe/**/*
       - Gemfile*
-      - '*.gemspec' # This does nothing. Why?
+      - Rakefile
+      - '*.gemspec'
   NewCops: enable
   TargetRubyVersion: 2.6
 
