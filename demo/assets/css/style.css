@@ -166,6 +166,7 @@ blockquote, .quote {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2rem;
+  padding-bottom: 1rem;
   padding-left: 1rem;
   padding-right: 1.2rem;
   padding-top: 1rem;
@@ -205,6 +206,9 @@ blockquote, .quote {
   margin-top: 0;
 }
 
+.quote > ol, .quote > ul {
+  margin-top: 0;
+}
 
 @media only screen and (min-width: 768px) and (max-width: 959px) {
   .inner {

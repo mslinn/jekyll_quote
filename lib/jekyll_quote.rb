@@ -21,32 +21,25 @@ module Jekyll
   class Quote < JekyllSupport::JekyllBlock
     attr_accessor :cite, :url
 
-    # See https://github.com/Shopify/liquid/wiki/Liquid-for-Programmers#create-your-own-tags
-    # @param tag_name [String] the name of the tag, which we already know.
-    # @param argument_string [String] the arguments from the tag, as a single string.
-    # @param parse_context [Liquid::ParseContext] hash that stores Liquid options.
-    #        By default it has two keys: :locale and :line_numbers, the first is a Liquid::I18n object, and the second,
-    #        a boolean parameter that determines if error messages should display the line number the error occurred.
-    #        This argument is used mostly to display localized error messages on Liquid built-in Tags and Filters.
-    #        See https://github.com/Shopify/liquid/wiki/Liquid-for-Programmers#create-your-own-tags
-    # @return [void]
-    def initialize(tag_name, argument_string, parse_context) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
-      super
-
-      @cite = @helper.parameter_specified?('cite')
-      @url = @helper.parameter_specified?('url')
-    end
-
     def render_impl(text)
-      text.strip!
+      @break  = @helper.parameter_specified? 'break' # enforced by CSS if a list ends the body
+      @by     = @helper.parameter_specified? 'by'
+      @cite   = @helper.parameter_specified? 'cite'
+      @noprep = @helper.parameter_specified? 'noprep'
+      @url    = @helper.parameter_specified? 'url'
+
+      preposition = 'From'
+      preposition = 'By' if @by
+      preposition = '' if @noprep
       if @cite
         attribution = if @url && !@url.empty?
                         "<a href='#{@url}' rel='nofollow' target='_blank'>#{@cite}</a>"
                       else
                         "#{@cite}\n"
                       end
-        attribution += "\n<br><br>" if text.end_with?('</ol>') || text.end_with?('</ul>')
-        attribution = "<span style='font-style:normal;'> &nbsp;&ndash; From #{@attribution}</span>\n"
+        tag = @break ? 'div' : 'span'
+        attribution = "<#{tag} style='font-style:normal;'> &nbsp;&ndash; #{preposition} #{attribution}</#{tag}>\n"
+        text = "<div>#{text}</div>" if @break
       end
       <<~END_HERE
         <div class='quote'>

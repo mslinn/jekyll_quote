@@ -37,7 +37,6 @@ Gem::Specification.new do |spec|
   spec.version = JekyllQuoteVersion::VERSION
 
   spec.add_dependency 'jekyll', '>= 3.5.0'
-  spec.add_dependency 'jekyll_plugin_support'
 
   spec.add_development_dependency 'debase'
   spec.add_development_dependency 'jekyll_plugin_support'

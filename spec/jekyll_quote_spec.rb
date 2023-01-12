@@ -48,38 +48,38 @@ class MyTest
     let(:parse_context) { TestParseContext.new }
 
     let(:helper) do
-      JekyllTagHelper.new(
+      JekyllPluginHelper.new(
         'quote',
-        "cite='This is a citation' url='https://blah.com' This is the quoted text.",
+        'This is a quote.',
         logger
       )
     end
 
     it 'has no cite or url' do
-      command_line = 'This is the quoted text.'.dup
+      helper.reinitialize('Quote has no cite or url.')
       quote = Jekyll::Quote.send(
         :new,
         'quote',
-        command_line,
+        helper.markup.dup,
         parse_context
       )
-      result = quote.send(:render_impl, command_line)
+      result = quote.send(:render_impl, helper.markup)
       expect(result).to match_ignoring_whitespace <<-END_RESULT
         <div class='quote'>
-          This is the quoted text.
+          Quote has no cite or url.
         </div>
       END_RESULT
     end
 
     it 'has a cite but no url' do
-      command_line = "cite='This is a citation' This is the quoted text.".dup
+      helper.reinitialize("cite='This is a citation' The quote has a cite but no url.")
       quote = Jekyll::Quote.send(
         :new,
         'quote',
-        command_line,
+        helper.markup.dup,
         parse_context
       )
-      result = quote.send(:render_impl, command_line)
+      result = quote.send(:render_impl, helper.markup)
       expect(result).to match_ignoring_whitespace <<-END_RESULT
         <div class='quote'>
           This is the quoted text.
@@ -90,36 +90,36 @@ class MyTest
     end
 
     it 'has a url but no cite' do
-      command_line = "url='https://blah.com' This is the quoted text.".dup
+      helper.reinitialize("url='https://blah.com' The quote has a url but no cite.")
       quote = Jekyll::Quote.send(
         :new,
         'quote',
-        command_line,
+        helper.markup.dup,
         parse_context
       )
-      result = quote.send(:render_impl, command_line)
+      result = quote.send(:render_impl, helper.markup)
       expect(result).to match_ignoring_whitespace <<-END_RESULT
         <div class='quote'>
-          This is the quoted text.
+        The quote has a url but no cite.
         </div>
       END_RESULT
     end
 
     it 'has a cite and a url' do
-      command_line = "cite='This is a citation' url='https://blah.com' This is the quoted text.".dup
+      helper.reinitialize "cite='This is a citation' url='https://blah.com' The quote has a url and a cite.".dup
       quote = Jekyll::Quote.send(
         :new,
         'quote',
-        command_line,
+        helper.markup.dup,
         parse_context
       )
-      result = quote.send(:render_impl, command_line)
+      result = quote.send(:render_impl, helper.markup)
       expect(result).to match_ignoring_whitespace <<-END_RESULT
         <div class='quote'>
-          This is the quoted text.
+        The quote has a url but no cite.
           <br><br>
           <span style='font-style:normal;'> &nbsp;&ndash; From
-            <a href='https://blah.com' rel='nofollow' target='_blank'>This is a citation</a>
+            <a href='https://blah.com' rel='nofollow' target='_blank'>This is a citation.</a>
           </span>
         </div>
       END_RESULT

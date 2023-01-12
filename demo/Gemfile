@@ -16,6 +16,7 @@ group :jekyll_plugins do
   gem 'jekyll-environment-variables'
   gem 'jekyll_href'
   gem 'jekyll_plugin_logger'
+  gem 'jekyll_plugin_support'
   gem 'jekyll_quote', path: '../'
   gem 'jekyll-tagging'
 end

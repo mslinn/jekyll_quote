@@ -19,3 +19,9 @@ Metrics/MethodLength:
 
 Layout/MultilineMethodCallIndentation:
   Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 10

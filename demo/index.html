@@ -11,14 +11,67 @@ title: Quote Test
 <p>
   Paragraph.
 </p>
-{% quote cite="Blaise Pascal, in Lettres provinciales" url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
+{% quote cite="Blaise Pascal" url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
   <code>cite</code> and <code>url</code> were provided.
+{% endquote %}
+{% quote break cite="Blaise Pascal" url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
+  <code>break</code>, <code>cite</code> and <code>url</code> were provided.
+{% endquote %}
+{% quote break by cite="Blaise Pascal" url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
+  <code>by</code>, <code>break</code>, <code>cite</code> and <code>url</code> were provided.
+{% endquote %}
+{% quote break noprep cite="Blaise Pascal" url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
+  <code>noprep</code>, <code>break</code>, <code>cite</code> and <code>url</code> were provided.
+{% endquote %}
+{% quote noprep cite="Blaise Pascal" url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
+  <code>noprep</code>, <code>cite</code> and <code>url</code> were provided.
 {% endquote %}
 
 
-<h2 id="id">Subheading</h2>
-{% quote cite="Blaise Pascal, in Lettres provinciales" %}
-  No <code>url</code> was provided for this quote.
+<h2 id="lists">H2</h2>
+{% quote cite="Blaise Pascal" %}
+  <h2>H2 Heading</h2>
+  <p>Only a <code>cite</code> was specified.</p>
+{% endquote %}
+{% quote break cite="Blaise Pascal" %}
+  <h2>H2 Heading</h2>
+  <p><code>break</code> and <code>cite</code> were specified.</p>
+{% endquote %}
+
+
+<h2 id="id1">Lists</h2>
+{% quote cite="Blaise Pascal" %}
+  <ol>
+    <li>Only a <code>cite</code> was specified.</li>
+    <li>Only a <code>cite</code> was specified.</li>
+  </ol>
+{% endquote %}
+{% quote cite="Blaise Pascal" %}
+  <ul>
+    <li>Only a <code>cite</code> was specified.</li>
+    <li>Only a <code>cite</code> was specified.</li>
+  </ul>
+{% endquote %}
+{% quote break cite="Blaise Pascal" %}
+  <ul>
+    <li><code>break</code> and <code>cite</code> were specified.</li>
+    <li><code>break</code> and <code>cite</code> were specified.</li>
+  </ul>
+{% endquote %}
+
+
+<h2 id="id2">No <span class="code">URL</span>s were provided for these quotes</h2>
+{% quote cite="Blaise Pascal" %}
+  Only a <code>cite</code> was specified.
+{% endquote %}
+{% quote by cite="Blaise Pascal" %}
+  <code>By</code> and <code>cite</code> were specified.
+{% endquote %}
+{% quote break by cite="Blaise Pascal" %}
+  <code>Break</code>, <code>By</code> and <code>cite</code> were specified.
+{% endquote %}
+{% quote break noprep cite="Blaise Pascal" %}
+  <code>Break</code>, <code>noprep</code> and <code>cite</code> were specified.
 {% endquote %}
 <p>
   Paragraph.
@@ -27,6 +80,8 @@ title: Quote Test
   No <code>cite</code> or <code>url</code> was provided for this quote.
 {% endquote %}
 
+
+<h2 id="id3">No <span class="code">cite</span>s were provided for these quotes</h2>
 {% quote url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
-No <code>cite</code> was provided for this quote.
+  No <code>cite</code> was provided for this quote.
 {% endquote %}

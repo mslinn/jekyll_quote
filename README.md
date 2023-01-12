@@ -4,6 +4,9 @@
 
 `jekyll_quote` is a Jekyll plugin that displays formatted quotes.
 
+See [demo/index.html](demo/index.html) for examples.
+
+
 ## Installation
 
 Add this line to your Jekyll project's Gemfile, within the `jekyll_plugins` group:
