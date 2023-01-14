@@ -25,11 +25,6 @@ Gem::Specification.new do |spec|
     Thanks for installing #{spec.name}!
 
   END_MESSAGE
-  spec.post_install_message = <<~END_MESSAGE
-
-    Thanks for installing #{spec.name}!
-
-  END_MESSAGE
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.6.0'
   spec.summary = 'Provides a Jekyll filter that creates formatted quotes.'
