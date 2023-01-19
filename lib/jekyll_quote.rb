@@ -38,8 +38,8 @@ module Jekyll
                         "#{@cite}\n"
                       end
         tag = @break ? 'div' : 'span'
-        attribution = "<#{tag} style='font-style:normal;'> &nbsp;&ndash; #{preposition} #{attribution}</#{tag}>\n"
-        text = "<div>#{text}</div>" if @break
+        attribution = "<#{tag} class='quoteAttribution'> &nbsp;&ndash; #{preposition} #{attribution}</#{tag}>\n"
+        text = "<div class='quoteText'>#{text}</div>" if @break
       end
       <<~END_HERE
         <div class='quote'>

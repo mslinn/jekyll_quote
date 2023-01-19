@@ -206,9 +206,21 @@ blockquote, .quote {
   margin-top: 0;
 }
 
-.quote > ol, .quote > ul {
+/* Updated for v0.3.0 */
+.quote > ol, .quote > ul, .quote > .quoteText > ol, .quote > .quoteText > ul {
   margin-top: 0;
 }
+
+/* Added for v0.3.0 */
+.quoteAttribution {
+  font-style: normal;
+}
+
+/* Added for v0.3.0 */
+.quoteBreak {
+  margin-top: 1em;
+}
+
 
 @media only screen and (min-width: 768px) and (max-width: 959px) {
   .inner {
