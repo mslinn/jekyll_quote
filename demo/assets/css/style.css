@@ -217,7 +217,7 @@ blockquote, .quote {
 }
 
 /* Added for v0.3.0 */
-.quoteBreak {
+div.quoteAttribution {
   margin-top: 1em;
 }
 
