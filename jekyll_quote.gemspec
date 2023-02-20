@@ -1,9 +1,6 @@
-# frozen_string_literal: true
-
 require_relative 'lib/jekyll_quote/version'
 
-# rubocop:disable Metrics/BlockLength
-Gem::Specification.new do |spec|
+Gem::Specification.new do |spec| # rubocop:disable Metrics/BlockLength
   github = 'https://github.com/mslinn/jekyll_quote'
 
   spec.bindir = 'exe'
@@ -32,14 +29,5 @@ Gem::Specification.new do |spec|
   spec.version = JekyllQuoteVersion::VERSION
 
   spec.add_dependency 'jekyll', '>= 3.5.0'
-
-  spec.add_development_dependency 'debase'
-  spec.add_development_dependency 'jekyll_plugin_support'
-  spec.add_development_dependency 'rspec-match_ignoring_whitespace'
-  spec.add_development_dependency 'rubocop'
-  # spec.add_development_dependency 'rubocop-jekyll'
-  spec.add_development_dependency 'rubocop-rake'
-  spec.add_development_dependency 'rubocop-rspec'
-  spec.add_development_dependency 'ruby-debug-ide'
+  spec.add_dependency 'jekyll_plugin_support', '~> 0.5.1'
 end
-# rubocop:enable Metrics/BlockLength

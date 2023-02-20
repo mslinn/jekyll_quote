@@ -1,27 +1,101 @@
+require:
+  # - rubocop-jekyll
+  - rubocop-md
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rspec
+
 AllCops:
   Exclude:
-      - vendor/**/*
-      - exe/**/*
-      - Gemfile*
-      - Rakefile
-      - '*.gemspec'
+    - demo/_site/**/*
+    - exe/**/*
+    - vendor/**/*
+    - Gemfile*
+    - Rakefile
+    - jekyll_quote.gemspec
   NewCops: enable
   TargetRubyVersion: 2.6
 
-Layout/HashAlignment:
+Gemspec/DeprecatedAttributeAssignment:
   Enabled: false
+
+Gemspec/RequireMFA:
+  Enabled: false
+
+Layout/InitialIndentation:
+  Exclude:
+    - README.md
+
+Layout/HashAlignment:
+  EnforcedColonStyle: table
+  Exclude:
+    - jekyll_quote.gemspec
 
 Layout/LineLength:
   Max: 150
 
-Metrics/MethodLength:
-  Max: 30
-
 Layout/MultilineMethodCallIndentation:
   Enabled: false
+
+Lint/RedundantCopDisableDirective:
+  Exclude:
+    - jekyll_quote.gemspec
+
+Metrics/BlockLength:
+  Exclude:
+    - jekyll_quote.gemspec
+    - spec/**/*
+
+Metrics/ClassLength:
+  Exclude:
+    - spec/**/*
+
+Metrics/MethodLength:
+  Max: 30
 
 Metrics/CyclomaticComplexity:
   Max: 10
 
 Metrics/PerceivedComplexity:
   Max: 10
+
+Naming/FileName:
+  Exclude:
+    - Rakefile
+
+RSpec/ExampleLength:
+  Max: 20
+
+RSpec/MultipleExpectations:
+  Max: 15
+
+Style/CommandLiteral:
+  Enabled: false
+
+Style/CommentedKeyword:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/StringConcatenation:
+  Exclude:
+    - spec/**/*
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/StringLiteralsInInterpolation:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma

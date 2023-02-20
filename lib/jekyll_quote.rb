@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'jekyll_plugin_support'
 require 'jekyll_plugin_support_helper'
 require_relative 'jekyll_quote/version'
@@ -8,7 +6,7 @@ require_relative 'jekyll_quote/version'
 # @license SPDX-License-Identifier: Apache-2.0
 
 module QuoteModule
-  PLUGIN_NAME = 'quote'
+  PLUGIN_NAME = 'quote'.freeze
 end
 
 module Jekyll
@@ -20,6 +18,8 @@ module Jekyll
   # </div>
   class Quote < JekyllSupport::JekyllBlock
     attr_accessor :cite, :url
+
+    include JekyllQuoteVersion
 
     def render_impl(text)
       @break  = @helper.parameter_specified? 'break' # enforced by CSS if a list ends the body
@@ -47,8 +47,7 @@ module Jekyll
         </div>
       END_HERE
     end
+
+    JekyllPluginHelper.register(self, QuoteModule::PLUGIN_NAME)
   end
 end
-
-PluginMetaLogger.instance.info { "Loaded #{QuoteModule::PLUGIN_NAME} v0.1.0 plugin." }
-Liquid::Template.register_tag(QuoteModule::PLUGIN_NAME, Jekyll::Quote)
