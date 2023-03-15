@@ -39,7 +39,7 @@ module Jekyll
                       end
         tag = @break ? 'div' : 'span'
         attribution = "<#{tag} class='quoteAttribution'> &nbsp;&ndash; #{preposition} #{attribution}</#{tag}>\n"
-        text = "<div class='quoteText'>#{text}</div>" if @break
+        text = "<div class='quoteText clearfix'>#{text}</div>" if @break
       end
       <<~END_HERE
         <div class='quote'>

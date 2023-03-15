@@ -1,11 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'ffi'
-gem 'jekyll', '~> 4.2.2'
+gem 'jekyll', '~> 4.3.2'
 gem 'nokogumbo', '=2.0.3'
 gem 'ptools'
-gem 'sprockets'
-gem 'webrick'
 
 group :jekyll_plugins do
   gem 'classifier-reborn'
@@ -13,7 +10,7 @@ group :jekyll_plugins do
   gem 'jekyll-assets'
   gem 'jekyll-environment-variables'
   gem 'jekyll_href'
-  gem 'jekyll_plugin_logger'
+  gem 'jekyll_img'
   gem 'jekyll_quote', path: '../'
   gem 'jekyll-tagging'
 end

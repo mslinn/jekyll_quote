@@ -5,12 +5,20 @@ last_modified_at: 2023-01-12
 layout: default
 title: Quote Test
 ---
-{% quote cite="Blaise Pascal, in Lettres provinciales" url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
-  I have only made this letter longer because I have not had the time to make it shorter.
+{% quote break noprep cite="Blaise Pascal, in Lettres provinciales"
+  url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
+  <div class="left" style="width: 45%; margin-top: 110px;">
+    I have only made this letter longer because I have not had the time to make it shorter.
+  </div>
+  {% img
+    align="right"
+    size="45%"
+    src="/assets/images/blaise_pascal.png"
+  %}
 {% endquote %}
 
 <p>
-  Paragraph.
+  This is a paragraph.
 </p>
 
 {% quote cite="Blaise Pascal" url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
