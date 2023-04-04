@@ -7,7 +7,7 @@ Gem::Specification.new do |spec| # rubocop:disable Metrics/BlockLength
   spec.authors = ['Mike Slinn']
   spec.email = ['mslinn@mslinn.com']
   spec.files = Dir['.rubocop.yml', 'LICENSE.*', 'Rakefile', '{lib,spec}/**/*', '*.gemspec', '*.md']
-  spec.homepage = 'https://www.mslinn.com/blog/2020/10/03/jekyll-plugins.html#quote'
+  spec.homepage = 'https://www.mslinn.com/jekyll/3000-jekyll-plugins.html#jekyll_quote'
   spec.license = 'MIT'
   spec.metadata = {
     'allowed_push_host' => 'https://rubygems.org',
