@@ -46,6 +46,7 @@ module Jekyll
       <<~END_HERE
         <div class='quote'>
           #{text}#{quote_attribution}
+          #{@helper.attribute if @helper.attribution}
         </div>
       END_HERE
     end

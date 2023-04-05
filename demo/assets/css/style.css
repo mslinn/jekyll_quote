@@ -339,17 +339,12 @@ div.quoteAttribution {
   clear:both;
  }
 
-/* End of jekyll_outline styles */
-
-
-/* Start of jekyll_plugin_support css */
-
-.jps_attribute {
+.quote .jps_attribute {
   display: flex;
-  margin-bottom: 1.5em;
+  margin-top: 1.5em;
 }
 
-.jps_attribute div {
+.quote .jps_attribute div {
   flex-grow: 1;
   font-family: "Helvetica Neue", Helvetica, Arial, serif;
   font-size: 8pt;
@@ -358,7 +353,8 @@ div.quoteAttribution {
   width: 0;
 }
 
-/* End of jekyll_plugin_support css */
+/* End of jekyll_outline styles */
+
 
 @media only screen and (min-width: 768px) and (max-width: 959px) {
   .inner {

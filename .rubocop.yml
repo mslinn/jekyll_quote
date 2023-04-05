@@ -40,6 +40,9 @@ Lint/RedundantCopDisableDirective:
   Exclude:
     - jekyll_quote.gemspec
 
+Metrics/AbcSize:
+  Max: 25
+
 Metrics/BlockLength:
   Exclude:
     - jekyll_quote.gemspec
