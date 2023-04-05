@@ -28,8 +28,7 @@ Layout/InitialIndentation:
 
 Layout/HashAlignment:
   EnforcedColonStyle: table
-  Exclude:
-    - jekyll_quote.gemspec
+  EnforcedHashRocketStyle: table
 
 Layout/LineLength:
   Max: 150

@@ -8,8 +8,7 @@ See [demo/index.html](demo/index.html) for examples.
 
 
 ## Installation
-
-Add this line to your Jekyll project's Gemfile, within the `jekyll_plugins` group:
+Add the following line to your Jekyll project's Gemfile, within the `jekyll_plugins` group:
 
 ```ruby
 group :jekyll_plugins do
@@ -17,19 +16,13 @@ group :jekyll_plugins do
 end
 ```
 
-Also add it to `_config.yml`:
-```yaml
-plugins:
-  - jekyll_quote
-```
-
 And then execute:
 
     $ bundle install
 
-Or install it yourself as:
 
-    $ gem install jekyll_quote
+## Attribution
+See [`jekyll_plugin_support` for `attribution`](https://github.com/mslinn/jekyll_plugin_support#subclass-attribution)
 
 
 ## Additional Information
@@ -66,7 +59,7 @@ jekyll_quote (0.1.0)
     Generates Jekyll logger with colored output.
 ```
 
-### Testing
+### Demo
 Examine the output by running:
 ```shell
 $ demo/_bin/debug -r

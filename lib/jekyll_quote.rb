@@ -1,5 +1,5 @@
 require 'jekyll_plugin_support'
-require 'jekyll_plugin_support_helper'
+require 'jekyll_plugin_helper'
 require_relative 'jekyll_quote/version'
 
 # @author Copyright 2022 Michael Slinn
@@ -22,6 +22,8 @@ module Jekyll
     include JekyllQuoteVersion
 
     def render_impl(text)
+      @helper.gem_file __FILE__ # This enables plugin attribution
+
       @break  = @helper.parameter_specified? 'break' # enforced by CSS if a list ends the body
       @by     = @helper.parameter_specified? 'by'
       @cite   = @helper.parameter_specified? 'cite'
@@ -32,18 +34,18 @@ module Jekyll
       preposition = 'By' if @by
       preposition = '' if @noprep
       if @cite
-        attribution = if @url && !@url.empty?
-                        "<a href='#{@url}' rel='nofollow' target='_blank'>#{@cite}</a>"
-                      else
-                        "#{@cite}\n"
-                      end
+        quote_attribution = if @url && !@url.empty?
+                              "<a href='#{@url}' rel='nofollow' target='_blank'>#{@cite}</a>"
+                            else
+                              "#{@cite}\n"
+                            end
         tag = @break ? 'div' : 'span'
-        attribution = "<#{tag} class='quoteAttribution'> &nbsp;&ndash; #{preposition} #{attribution}</#{tag}>\n"
+        quote_attribution = "<#{tag} class='quoteAttribution'> &nbsp;&ndash; #{preposition} #{quote_attribution}</#{tag}>\n"
         text = "<div class='quoteText clearfix'>#{text}</div>" if @break
       end
       <<~END_HERE
         <div class='quote'>
-          #{text}#{attribution}
+          #{text}#{quote_attribution}
         </div>
       END_HERE
     end
