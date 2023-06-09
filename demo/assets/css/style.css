@@ -96,8 +96,8 @@ pre {
   width: 690px;
 }
 
-.bg_yellow {
-  background: yellow !important;
+.bg_yellow, .bg_yellow.quote {
+  background: yellow;
 }
 
 .codeLabel {
