@@ -1,3 +1,6 @@
+## 0.4.1 / 2023-06-09
+  * Added `style` and `class` options.
+
 ## 0.4.0 / 2023-04-05
   * Added [`attribution` support](https://github.com/mslinn/jekyll_plugin_support#subclass-attribution).
 

@@ -27,25 +27,32 @@ module Jekyll
       @break  = @helper.parameter_specified? 'break' # enforced by CSS if a list ends the body
       @by     = @helper.parameter_specified? 'by'
       @cite   = @helper.parameter_specified? 'cite'
+      @class  = @helper.parameter_specified? 'class'
       @noprep = @helper.parameter_specified? 'noprep'
+      @style  = @helper.parameter_specified? 'style'
       @url    = @helper.parameter_specified? 'url'
-
       preposition = 'From'
       preposition = 'By' if @by
       preposition = '' if @noprep
       if @cite
-        quote_attribution = if @url && !@url.empty?
-                              "<a href='#{@url}' rel='nofollow' target='_blank'>#{@cite}</a>"
-                            else
-                              "#{@cite}\n"
-                            end
+        cite_markup = if @url && !@url.empty?
+                        "<a href='#{@url}' rel='nofollow' target='_blank'>#{@cite}</a>"
+                      else
+                        "#{@cite}\n"
+                      end
         tag = @break ? 'div' : 'span'
-        quote_attribution = "<#{tag} class='quoteAttribution'> &nbsp;&ndash; #{preposition} #{quote_attribution}</#{tag}>\n"
-        text = "<div class='quoteText clearfix'>#{text}</div>" if @break
+        @cite_markup = "<#{tag} class='quoteAttribution'> &nbsp;&ndash; #{preposition} #{cite_markup}</#{tag}>\n"
       end
+      @text = @break ? "<div class='quoteText clearfix'>#{text}</div>" : text
+      output
+    end
+
+    def output
+      klass = "#{@class} " if @class
+      styling = " style='#{@style}'" if @style
       <<~END_HERE
-        <div class='quote'>
-          #{text}#{quote_attribution}
+        <div class='#{klass}quote'#{styling}>
+          #{@text}#{@cite_markup}
           #{@helper.attribute if @helper.attribution}
         </div>
       END_HERE

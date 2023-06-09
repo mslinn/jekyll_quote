@@ -21,6 +21,14 @@ title: Quote Test
   This is a paragraph.
 </p>
 
+{% quote cite="Blaise Pascal" class="bg_yellow" url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
+  <code>class="bg_yellow"</code>, <code>cite</code> and <code>url</code> were provided.
+{% endquote %}
+
+{% quote cite="Blaise Pascal" style="color: red;" url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
+  <span class='code'>style="color: red;"</span>, <span class='code'>cite</span> and <span class="code">url</span> were provided.
+{% endquote %}
+
 {% quote cite="Blaise Pascal" url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
   <code>cite</code> and <code>url</code> were provided.
 {% endquote %}
