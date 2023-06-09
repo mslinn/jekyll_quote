@@ -18,12 +18,48 @@ end
 
 And then execute:
 
-    $ bundle install
+    $ bundle
+
+
+## Syntax
+```
+{% quote OPTIONS %}
+  Content of quote goes here.
+{% endquote %}
+```
+
+OPTIONS are:
+ * `break` &ndash; Put the citation on a separate line
+ * `by` &ndash; Preface the citation with the preposition 'By'; the default preposition is 'From'
+ * `cite` &ndash; Citation text
+ * `noprep` &ndash; Do not preface the citation with a preposition
+ * `url` &ndash; URL for the citation
+
+
+## Usage Example
+```
+{% quote cite="Blaise Pascal, in Lettres provinciales"
+   url="https://en.wikipedia.org/wiki/Lettres_provinciales"
+%}
+  I have only made this letter longer because
+  I have not had the time to make it shorter.
+{% endquote %}
+```
 
 
 ## Attribution
 See [`jekyll_plugin_support` for `attribution`](https://github.com/mslinn/jekyll_plugin_support#subclass-attribution)
 
+
+## Demo
+A demo / test website is provided in the `demo` directory.
+It can be used to debug the plugin or to run freely.
+Please examine the HTML files in the demo to see how the plugin works.
+
+To run the demo freely from the command line, type:
+```
+$ demo/_bin/debug -r
+```
 
 ## Additional Information
 More information is available on
