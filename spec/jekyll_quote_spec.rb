@@ -38,7 +38,7 @@ end
 
 # These tests all fail because I have not figured out how to provide a Jekyll block body to a test
 class MyTest
-  RSpec.describe Jekyll::Quote do # rubocop:disable Metrics/BlockLength
+  RSpec.describe Jekyll::Quote do
     let(:logger) do
       PluginMetaLogger.instance.new_logger(self, PluginMetaLogger.instance.config)
     end
@@ -55,7 +55,7 @@ class MyTest
 
     it 'has no cite or url' do
       helper.reinitialize('Quote has no cite or url.')
-      quote = Jekyll::Quote.send(
+      quote = described_class.send(
         :new,
         'quote',
         helper.markup.dup,
@@ -71,7 +71,7 @@ class MyTest
 
     it 'has a cite but no url' do
       helper.reinitialize("cite='This is a citation' The quote has a cite but no url.")
-      quote = Jekyll::Quote.send(
+      quote = described_class.send(
         :new,
         'quote',
         helper.markup.dup,
@@ -89,7 +89,7 @@ class MyTest
 
     it 'has a url but no cite' do
       helper.reinitialize("url='https://blah.com' The quote has a url but no cite.")
-      quote = Jekyll::Quote.send(
+      quote = described_class.send(
         :new,
         'quote',
         helper.markup.dup,
@@ -104,8 +104,8 @@ class MyTest
     end
 
     it 'has a cite and a url' do
-      helper.reinitialize "cite='This is a citation' url='https://blah.com' The quote has a url and a cite.".dup
-      quote = Jekyll::Quote.send(
+      helper.reinitialize "cite='This is a citation' url='https://blah.com' The quote has a url and a cite.".+
+      quote = described_class.send(
         :new,
         'quote',
         helper.markup.dup,
