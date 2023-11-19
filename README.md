@@ -7,19 +7,21 @@ See [demo/index.html](demo/index.html) for examples.
 
 ## Installation
 
-Add the following line to your Jekyll project's Gemfile, within the `jekyll_plugins` group:
+1. Add the following line to your Jekyll project's Gemfile, within the `jekyll_plugins` group:
 
-```ruby
-group :jekyll_plugins do
-  gem 'jekyll_quote'
-end
-```
+   ```ruby
+   group :jekyll_plugins do
+     gem 'jekyll_quote'
+   end
+   ```
 
-And then execute:
+2. Install the `jekyll_quote` Ruby gem and mark it as a dependency of your project by typing:
 
-```shell
-$ bundle
-```
+   ```shell
+   $ bundle
+   ```
+
+3. Copy the CSS classes from `demo/assets/css/jekyll_quote.css` to your Jekyll project's CSS file.
 
 
 ## Syntax
