@@ -21,6 +21,7 @@ blockquote {
   position: relative;
   quotes: '\201c' '\201d';
   width: 80%;  /* space for the quotes */
+  text-align: justify;
   text-indent: 0;
 }
 
