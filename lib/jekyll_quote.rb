@@ -1,5 +1,5 @@
 require 'jekyll_plugin_support'
-require 'jekyll_plugin_helper'
+require 'helper/jekyll_plugin_helper'
 require_relative 'jekyll_quote/version'
 
 # @author Copyright 2022 Michael Slinn
