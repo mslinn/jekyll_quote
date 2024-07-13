@@ -75,6 +75,10 @@ div.quoteAttribution {
   margin-top: 1em;
 }
 
+div.quoteText + div.quoteAttribution {
+  margin-top: 0;
+}
+
 .clearfix:after {
   content:"";
   display:block;
