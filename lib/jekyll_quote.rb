@@ -16,7 +16,7 @@ module Jekyll
   #   Bla bla.
   #   <br><br> <span style='font-style:normal;'>&nbsp;&ndash; From Source cite.</span>
   # </div>
-  class Quote < JekyllSupport::JekyllBlock
+  class Quote < ::JekyllSupport::JekyllBlock
     attr_accessor :cite, :url
 
     include JekyllQuoteVersion
@@ -58,6 +58,6 @@ module Jekyll
       END_HERE
     end
 
-    JekyllPluginHelper.register(self, QuoteModule::PLUGIN_NAME)
+    ::JekyllSupport::JekyllPluginHelper.register(self, QuoteModule::PLUGIN_NAME)
   end
 end

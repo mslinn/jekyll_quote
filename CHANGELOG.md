@@ -1,5 +1,11 @@
 # Change Log
 
+
+## 0.4.3 / 2024-07-22
+
+* Depends upon jekyll_plugin_support v0.8.7
+
+
 ## 0.4.2 / 2024-04-27
 
 * Depends upon jekyll_plugin_support v0.8.5
