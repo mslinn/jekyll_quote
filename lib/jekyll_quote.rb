@@ -5,10 +5,6 @@ require_relative 'jekyll_quote/version'
 # @author Copyright 2022 Michael Slinn
 # @license SPDX-License-Identifier: Apache-2.0
 
-module QuoteModule
-  PLUGIN_NAME = 'quote'.freeze
-end
-
 module Jekyll
   # Usage: {% quote [break] [by] [cite='Joe Blow'] [noprep] [url='https://blabla.com'] %}Bla bla.{% endquote %}
   # Output looks like:
@@ -16,7 +12,9 @@ module Jekyll
   #   Bla bla.
   #   <br><br> <span style='font-style:normal;'>&nbsp;&ndash; From Source cite.</span>
   # </div>
-  class Quote < ::JekyllSupport::JekyllBlock
+  class Quote < JekyllSupport::JekyllBlock
+    PLUGIN_NAME = 'quote'.freeze
+
     attr_accessor :cite, :url
 
     include JekyllQuoteVersion
@@ -58,6 +56,6 @@ module Jekyll
       END_HERE
     end
 
-    ::JekyllSupport::JekyllPluginHelper.register(self, QuoteModule::PLUGIN_NAME)
+    JekyllSupport::JekyllPluginHelper.register(self, PLUGIN_NAME)
   end
 end
