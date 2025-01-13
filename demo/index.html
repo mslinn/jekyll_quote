@@ -5,6 +5,13 @@ last_modified_at: 2023-01-12
 layout: default
 title: Quote Test
 ---
+<h2 id="id1">ID Check</h2>
+<p>
+  {% href label='Id check' url='#id_check' %}
+</p>
+
+
+<h2 id="moar">Moar Tests!</h2>
 {% quote attribution break noprep cite="Blaise Pascal, in Lettres provinciales"
   url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
   <div class="left" style="width: 45%; margin-top: 110px;">
@@ -131,4 +138,10 @@ title: Quote Test
 <h2 id="id3">No <span class="code">cite</span>s were provided for these quotes</h2>
 {% quote url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
   No <code>cite</code> was provided for this quote.
+{% endquote %}
+
+
+<h2 id="id_ck">ID check</h2>
+{% quote id='id_check' url="https://en.wikipedia.org/wiki/Lettres_provinciales" %}
+  This tests if the HTML id attribute was properly generated
 {% endquote %}

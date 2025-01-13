@@ -26,6 +26,10 @@ module Jekyll
       @by     = @helper.parameter_specified? 'by'
       @cite   = @helper.parameter_specified? 'cite'
       @class  = @helper.parameter_specified? 'class'
+
+      @id = @helper.parameter_specified? 'id'
+      @id = " id='#{@id}'" if @id
+
       @noprep = @helper.parameter_specified? 'noprep'
       @style  = @helper.parameter_specified? 'style'
       @url    = @helper.parameter_specified? 'url'
@@ -49,7 +53,7 @@ module Jekyll
       klass = "#{@class} " if @class
       styling = " style='#{@style}'" if @style
       <<~END_HERE
-        <div class='#{klass}quote'#{styling}>
+        <div#{@id} class='#{klass}quote'#{styling}>
           #{@text}#{@cite_markup}
           #{@helper.attribute if @helper.attribution}
         </div>
