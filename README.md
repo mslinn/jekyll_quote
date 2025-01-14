@@ -37,10 +37,13 @@ The default preposition is 'From'.
 OPTIONS are:
 
 * `break` &ndash; Put the citation on a separate line. Ignored if `cite` was not specified.
-* `by` &ndash; Preface the citation with the preposition 'By'. Ignored if `cite` was not specified.
+* `by` &ndash; Preface the citation with the preposition 'By'.
+  Ignored if `cite` was not specified.
 * `cite` &ndash; Citation text
 * `class` &ndash; Apply additional CSS classes
-* `noprep` &ndash; Do not preface the citation with a preposition. Ignored if `cite` was not specified.
+* `id` &ndash; HTML id attribute for the enclosing `div`
+* `noprep` &ndash; Do not preface the citation with a preposition.
+  Ignored if `cite` was not specified.
 * `style` &ndash; Apply additional CSS styling
 * `url` &ndash; URL for the citation. Ignored if `cite` was not specified.
 
