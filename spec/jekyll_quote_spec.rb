@@ -1,7 +1,7 @@
 require 'jekyll'
 require 'jekyll_plugin_logger'
 require 'rspec/match_ignoring_whitespace'
-require_relative '../lib/jekyll_quote'
+require_relative 'spec_helper'
 
 Registers = Struct.new(:page, :site)
 
@@ -36,7 +36,7 @@ class TestParseContext < Liquid::ParseContext
   end
 end
 
-# These tests all fail because I have not figured out how to provide a Jekyll block body to a test
+# FIXME: These tests all fail because I have not figured out how to provide a Jekyll block body to a test
 class MyTest
   RSpec.describe Jekyll::Quote do
     let(:logger) do
@@ -46,7 +46,7 @@ class MyTest
     let(:parse_context) { TestParseContext.new }
 
     let(:helper) do
-      JekyllPluginHelper.new(
+      JekyllSupport::JekyllPluginHelper.new(
         'quote',
         'This is a quote.',
         logger
@@ -59,7 +59,7 @@ class MyTest
         :new,
         'quote',
         helper.markup.dup,
-        parse_context
+        logger
       )
       result = quote.send(:render_impl, helper.markup)
       expect(result).to match_ignoring_whitespace <<-END_RESULT
@@ -75,7 +75,7 @@ class MyTest
         :new,
         'quote',
         helper.markup.dup,
-        parse_context
+        logger
       )
       result = quote.send(:render_impl, helper.markup)
       expect(result).to match_ignoring_whitespace <<-END_RESULT
@@ -93,7 +93,7 @@ class MyTest
         :new,
         'quote',
         helper.markup.dup,
-        parse_context
+        logger
       )
       result = quote.send(:render_impl, helper.markup)
       expect(result).to match_ignoring_whitespace <<-END_RESULT
@@ -109,7 +109,7 @@ class MyTest
         :new,
         'quote',
         helper.markup.dup,
-        parse_context
+        logger
       )
       result = quote.send(:render_impl, helper.markup)
       expect(result).to match_ignoring_whitespace <<-END_RESULT
